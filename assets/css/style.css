@@ -130,7 +130,8 @@ table td, .table th{
 }
 
 #update_inventory .form-group input[type="text"],
-#add_inventory .form-group input[type="text"]{
+#add_inventory .form-group input[type="text"],
+#add_shipment .form-group input[type="text"]{
     width: 100%;
     padding: .6em 1em;
     margin: .5em 0;
@@ -141,7 +142,18 @@ table td, .table th{
 }
 
 #update_inventory .form-group input[type="number"],
-#add_inventory .form-group input[type="number"]{
+#add_inventory .form-group input[type="number"],
+#add_shipment .form-group input[type="number"]{
+    width: 100%;
+    padding: .6em 1em;
+    margin: .5em 0;
+    border: 1px solid var(--border);
+    font-family: 'Rubik', sans-serif;
+    font-size: 1em;
+    border-radius: .2em;
+}
+
+#add_shipment .form-group select{
     width: 100%;
     padding: .6em 1em;
     margin: .5em 0;
@@ -152,7 +164,8 @@ table td, .table th{
 }
 
 #update_inventory .form-group .btn,
-#add_inventory .form-group .btn{
+#add_inventory .form-group .btn,
+#add_shipment .form-group .btn{
     width: 100%;
     padding: .9em 1em;
     background-color: #004c3f;

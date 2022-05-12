@@ -1,4 +1,4 @@
-var InventoryDB = require('../model/model');
+var InventoryDB = require('../model/inventory_model');
 
 // Create a new Inventory
 exports.create = (req,res) => {

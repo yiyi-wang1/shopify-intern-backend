@@ -1,0 +1,28 @@
+            <!-- form handing -->
+            <form action="/api/shipment" method="POST" id="add_shipment">
+                <div class="new_inventory">
+                    <div class="form-group">
+                        <label for="name" class="text-dark">Recipient Name</label>
+                        <input type="hidden" name="id" value="">
+                        <input type="text" name="name" value="" placeholder="Enter Recipient Here">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inventory" class="text-dark">Inventory</label>
+                        <select name="inventory" value="" placeholder="Select Inventory Here">
+                            <!-- for loop code start -->
+                            <% for(var i=0; i < inventory.length; i++) { %>
+                            <option value="<%= inventory[i]._id %>"><%= inventory[i].name %></option>
+                            <% } %>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="quantity" class="text-dark">Quantity</label>
+                        <input type="number" name="quantity" oninput="value=value.replace('-', '')" value="" placeholder="Enter Quantity Here">
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" class="btn text-light update">Save</button>
+                    </div>
+                </div>
+            </form>

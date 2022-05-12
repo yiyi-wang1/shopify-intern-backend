@@ -1,10 +1,9 @@
 const axios = require('axios');
 
-
 exports.homeRoutes = (req, res) => {
     axios.get('http://localhost:3000/api/inventory')
     .then(function (response) {
-        console.log(response.data)
+        // console.log(response.data)
         res.render('index', {inventory: response.data})
     })
     .catch(err =>{
@@ -19,10 +18,21 @@ exports.addInventoryRoutes = (req, res) => {
 exports.updateInventoryRoutes = (req, res) => {
     axios.get('http://localhost:3000/api/inventory', {params: {id: req.query.id}})
     .then(function (response) {
-        console.log(response.data);
+        // console.log(response.data);
         res.render('update_inventory', {inventory: response.data})
     })
     .catch(err =>{
         res.send(err);
+    })
+}
+
+exports.addShipmentRoutes = (req, res) => {
+    axios.get('http://localhost:3000/api/inventory')
+    .then(function (response) {
+        // console.log(response.data)
+        res.render('add_shipment', {inventory: response.data})
+    })
+    .catch(err =>{
+        res.send(err)
     })
 }

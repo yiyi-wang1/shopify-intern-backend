@@ -4,6 +4,10 @@ $("#add_inventory").submit(function(event){
     alert("Create a new inventory successfully!");
 })
 
+$("#add_shipment").submit(function(event){
+    alert("Create a new shipment successfully!");
+})
+
 $("#update_inventory").submit(function(event){
     event.preventDefault();
 
