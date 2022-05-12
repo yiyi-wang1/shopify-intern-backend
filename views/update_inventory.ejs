@@ -1,0 +1,49 @@
+<!-- include header -->
+<%- include('include/_header') %>
+<!-- /include header -->
+
+    <!-- Main Section -->
+    <main id="main-section">
+        <div class="container">
+            <div class="box-nav d-flex justify-between">
+                <div class="filter">
+                    <a href="/"><i class="fas fa-angle-double-left"></i>All Inventory</a>
+                </div>
+            </div>
+
+            <div class="form-title text-center">
+                <h2 class="text-dark">Update Inventory</h2>
+                <span class="text-dark">Use the below form to update inventory</span>
+            </div>
+
+            <!-- include form -->
+                <form method="POST" id="update_inventory">
+                    <div class="new_inventory">
+                        <div class="form-group">
+                            <label for="name" class="text-dark">Name</label>
+                            <input type="hidden" name="id" value="<%= inventory._id%>">
+                            <input type="text" name="name" value="<%= inventory.name%>" placeholder="Enter Inventory Here">
+                        </div>
+                        <div class="form-group">
+                            <label for="quantity" class="text-dark">Quantity</label>
+                            <input type="number" name="quantity" oninput="value=value.replace('-', '')" value="<%= inventory.quantity%>" placeholder="Enter Quantity Here">
+                        </div>
+                        <div class="form-group">
+                            <label for="price" class="text-dark">Unit Price</label>
+                            <input type="number" name="price" oninput="value=value.replace('-', '')" value="<%= inventory.price%>" step="0.1" placeholder="Enter Price Here">
+                        </div>
+    
+                        <div class="form-group">
+                            <button type="submit" class="btn text-light update">Save</button>
+                        </div>
+                    </div>
+                </form>
+            <!-- /include form -->
+            
+        </div>
+    </main>
+    <!-- /Main Section -->
+
+<!-- include footer -->
+<%- include('include/_footer') %>
+<!-- /include footer -->

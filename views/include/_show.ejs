@@ -1,0 +1,16 @@
+<% for(var i = 0; i < inventory.length; i++) { %>
+<tr>
+    <td><%= i + 1 %></td>
+    <td><%= inventory[i].name %></td>
+    <td><%= inventory[i].quantity %></td>>
+    <td><%= inventory[i].price %></td>
+    <td>
+        <a href="/update-inventory?id=<%= inventory[i]._id%>" class="btn border-shadow update">
+            <span class="text-gradient"><i class="fas fa-pencil-alt"></i></span>
+        </a>
+        <a class="btn border-shadow delete" data-id=<%= inventory[i]._id%>>
+            <span class="text-gradient"><i class="fas fa-times"></i></span>
+        </a>
+    </td>
+</tr>
+<% } %>
