@@ -6,8 +6,12 @@ var shipment = new mongoose.Schema({
         type: String,
         required: true
     },
-    inventory:{
+    inventory_id:{
         type: Schema.Types.ObjectId, ref: "inventory",
+        required: true
+    },
+    inventory_name:{
+        type: String,
         required: true
     },
     quantity:{

@@ -1,5 +1,6 @@
 var ShipmentDB = require('../model/shipment_model');
 var InventoryDB = require('../model/inventory_model');
+var mongoose = require('mongoose');
 
 // Create a new shipment
 exports.create = (req,res) => {
@@ -10,10 +11,21 @@ exports.create = (req,res) => {
         return;
     }
 
+    console.log(req.body);
+
     //new shipment
+    const inventory = req.body.inventory;
+    // console.log(inventory);
+    var inventoryInfo = inventory.split(',');
+    const inventory_id = mongoose.Types.ObjectId(inventoryInfo[0].trim());
+    const inventory_name = inventoryInfo[1];
+    // console.log(inventory_id);
+    // console.log(inventory_name);
+    
     const shipment = new ShipmentDB({
         name: req.body.name,
-        inventory: req.body.inventory,
+        inventory_id: inventory_id,
+        inventory_name: inventory_name,
         quantity: req.body.quantity
     })
 
@@ -30,10 +42,9 @@ exports.create = (req,res) => {
         })
 
     
-    //update inventory in db
-    const id = req.body.inventory;
+    // //update inventory in db
     const decreasedQuantity = - req.body.quantity;
-    InventoryDB.findByIdAndUpdate(id, {$inc: {quantity: decreasedQuantity}})
+    InventoryDB.findByIdAndUpdate(inventory_id, {$inc: {quantity: decreasedQuantity}})
         .then(data => {       
             // res.redirect('/add-shipment');
             })
@@ -44,79 +55,16 @@ exports.create = (req,res) => {
 }
 
 
-// // show inventory
-// exports.find = (req,res) => {
+// show shipment
+exports.find = (req,res) => {
 
-//     if(req.query.id){
-//         const id = req.query.id;
+    ShipmentDB.find()
+    .then(shipment => {
+        res.send(shipment)
+    })
+    .catch(err =>{
+        res.status(500).send({
+            message: err.message});
+    })
 
-//         InventoryDB.findById(id)
-//         .then(data => {
-//             if(!data){
-//                 res.status(404).send({
-//                     message: "Cannot find inventory"
-//                 })
-//             }else{
-//                 res.send(data);
-//             }
-//         })
-//         .catch(err => {
-//             res.status(500).send({
-//                 message: err.message});
-//         })
-//     }else{
-//         InventoryDB.find()
-//         .then(inventory => {
-//             res.send(inventory)
-//         })
-//         .catch(err =>{
-//             res.status(500).send({
-//                 message: err.message});
-//         })
-//     }
-// }
-
-
-// // Update inventory by id
-// exports.update = (req,res) => {
-//     if(!req.body){
-//         res.status(400).send({
-//             message:"Content can not be empty!"});
-//         return;
-//     }
-    
-//     const id = req.params.id;
-//     InventoryDB.findByIdAndUpdate(id, req.body)
-//         .then(data => {
-//             if(!data){
-//                 res.status(404).send({
-//                     message:`Cannot Update inventory with ${id}`})
-//             }else{
-//                 res.send(data);
-//             }
-//         })
-//         .catch(err =>{
-//             res.status(500).send({
-//                 message: err.message})
-//         })
-// }
-
-// // Delete inventory by id
-// exports.delete = (req,res) => {
-//     const id = req.params.id;
-
-//     InventoryDB.findByIdAndDelete(id)
-//         .then(data => {
-//             if(!data){
-//                 res.status(404).send({
-//                     message:`Connot delete inventory with ${id}`})
-//             }else{
-//                 res.send({
-//                     message: "Inventory was deleted!"})
-//             }
-//         })
-//         .catch(err =>{
-//             res.status(500).send({
-//                 message: err.message})
-//         })
-// }
+}

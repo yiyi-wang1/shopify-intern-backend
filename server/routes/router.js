@@ -29,18 +29,21 @@ route.get('/update-inventory', sevices.updateInventoryRoutes);
  */
  route.get('/add-shipment', sevices.addShipmentRoutes);
 
+ /**
+ * @description View Shipment Page Route
+ * @METHOD GET/
+ */
+  route.get('/view-shipment', sevices.viewShipmentRoutes);
 
-//API
+//inventory API
 route.post('/api/inventory', inventory_controller.create);
 route.get('/api/inventory', inventory_controller.find);
 route.put('/api/inventory/:id', inventory_controller.update);
 route.delete('/api/inventory/:id', inventory_controller.delete);
 
 
-//API
+//shipment API
 route.post('/api/shipment', shipment_controller.create);
-// route.get('/api/inventory', controller.find);
-// route.put('/api/inventory/:id', controller.update);
-// route.delete('/api/inventory/:id', controller.delete);
+route.get('/api/shipment', shipment_controller.find);
 
 module.exports = route;

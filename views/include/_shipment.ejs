@@ -12,7 +12,7 @@
                         <select name="inventory" value="" placeholder="Select Inventory Here">
                             <!-- for loop code start -->
                             <% for(var i=0; i < inventory.length; i++) { %>
-                            <option value="<%= inventory[i]._id %>"><%= inventory[i].name %></option>
+                            <option value="<%=inventory[i]._id%> , <%=inventory[i].name%>"><%=inventory[i].name%></option>
                             <% } %>
                     </div>
 

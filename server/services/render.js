@@ -36,3 +36,14 @@ exports.addShipmentRoutes = (req, res) => {
         res.send(err)
     })
 }
+
+exports.viewShipmentRoutes = (req, res) => {
+    axios.get('http://localhost:3000/api/shipment')
+    .then(function (response) {
+        // console.log(response.data)
+        res.render('view_shipment', {shipment: response.data})
+    })
+    .catch(err =>{
+        res.send(err)
+    })
+}

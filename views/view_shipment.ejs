@@ -1,0 +1,48 @@
+<!-- include header -->
+<%- include('include/_header') %>
+<!-- /include header -->
+
+    <!-- Main Section -->
+    <main id="main-section">
+        <div class="container">
+            <div class="box-nav d-flex justify-between">
+                <div class="filter">
+                    <a href="/"><i class="fas fa-angle-double-left"></i>All Inventory</a>
+                </div>
+            </div>
+
+            <div class="form-title text-center">
+                <h2 class="text-dark">All Shipment</h2>
+                <span class="text-dark">See the below for shipment information</span>
+            </div>
+            <br/>
+
+            <!-- Table for shipment -->
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Inventory</th>
+                        <th>Quantity</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for(var i = 0; i < shipment.length; i++) { %>
+                        <tr>
+                            <td><%= i + 1 %></td>
+                            <td><%= shipment[i].name %></td>
+                            <td><%= shipment[i].inventory_name %></td>
+                            <td><%= shipment[i].quantity %></td>
+                        </tr>
+                    <% } %>
+                </tbody>
+            </table>
+            
+        </div>
+    </main>
+    <!-- /Main Section -->
+
+<!-- include footer -->
+<%- include('include/_footer') %>
+<!-- /include footer -->
