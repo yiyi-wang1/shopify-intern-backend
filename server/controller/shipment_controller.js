@@ -17,7 +17,7 @@ exports.create = (req,res) => {
     const inventory = req.body.inventory;
     // console.log(inventory);
     var inventoryInfo = inventory.split(',');
-    const inventory_id = mongoose.Types.ObjectId(inventoryInfo[0].trim());
+    const inventory_id = mongoose.Types.ObjectId(inventoryInfo[0]);
     const inventory_name = inventoryInfo[1];
     // console.log(inventory_id);
     // console.log(inventory_name);
@@ -66,5 +66,4 @@ exports.find = (req,res) => {
         res.status(500).send({
             message: err.message});
     })
-
 }

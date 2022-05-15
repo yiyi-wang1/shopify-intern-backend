@@ -9,16 +9,16 @@
 
                     <div class="form-group">
                         <label for="inventory" class="text-dark">Inventory</label>
-                        <select name="inventory" value="" placeholder="Select Inventory Here">
+                        <select name="inventorySelect" id="inventorySelect" value="" placeholder="Select Inventory Here">
                             <!-- for loop code start -->
                             <% for(var i=0; i < inventory.length; i++) { %>
-                            <option value="<%=inventory[i]._id%> , <%=inventory[i].name%>"><%=inventory[i].name%></option>
+                            <option value="<%=inventory[i]._id%>, <%=inventory[i].name%>"><%=inventory[i].name%></option>
                             <% } %>
                     </div>
 
                     <div class="form-group">
                         <label for="quantity" class="text-dark">Quantity</label>
-                        <input type="number" name="quantity" oninput="value=value.replace('-', '')" value="" placeholder="Enter Quantity Here">
+                        <input type="number" name="quantity" id="inventory_quantity" value="" oninput="checkQuantity()" placeholder="Enter Quantity Here">
                     </div>
 
                     <div class="form-group">
@@ -26,3 +26,23 @@
                     </div>
                 </div>
             </form>
+
+            <script>
+                    var inventoryList = <%-JSON.stringify(inventory)%>;
+                    function checkQuantity(){
+                        var quantity = document.getElementById('inventory_quantity').value;
+                        var inventoryInfo = document.getElementById('inventorySelect').value.split(',');
+                        var id = inventoryInfo[0];
+                        for(var i=0; i < inventoryList.length; i++){
+                                if(id == inventoryList[i]._id){
+                                    console.log(inventoryList[i].quantity);
+                                    if(quantity > inventoryList[i].quantity){
+                                        document.getElementById('inventory_quantity').value = inventoryList[i].quantity;
+                                    }
+                                }
+                        }
+                        if(quantity < 0){
+                            document.getElementById('inventory_quantity').value = 0;
+                        }
+                    }
+            </script>
