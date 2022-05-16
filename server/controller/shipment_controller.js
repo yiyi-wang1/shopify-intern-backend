@@ -14,8 +14,8 @@ exports.create = (req,res) => {
     console.log(req.body);
 
     //new shipment
-    const inventory = req.body.inventory;
-    // console.log(inventory);
+    const inventory = req.body.inventorySelect;
+    console.log(inventory);
     var inventoryInfo = inventory.split(',');
     const inventory_id = mongoose.Types.ObjectId(inventoryInfo[0]);
     const inventory_name = inventoryInfo[1];

@@ -1,10 +1,18 @@
 
 
 $("#add_inventory").submit(function(event){
+    if(!$("#name").val() | !$("#quatity").val() |!$("#price").val()){
+        alert("Please enter the fields!");
+        return false;
+    }
     alert("Create a new inventory successfully!");
 })
 
 $("#add_shipment").submit(function(event){
+    if(!$("#recipient_name").val() | !$("#inventorySelect").val() |!$("#inventory_quantity").val()){
+        alert("Please enter the fields!");
+        return false;
+    }
     alert("Create a new shipment successfully!");
 })
 
